@@ -15,7 +15,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "static-analysis": "eslint src",
+    "static-analysis:fix": "eslint src --fix"
   },
   "eslintConfig": {
     "extends": [
@@ -38,11 +40,25 @@
   "devDependencies": {
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^19.0.2",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-babel": "^5.3.1",
     "eslint-plugin-import": "^2.25.3",
+    "eslint-plugin-jsdoc": "^37.1.0",
     "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.2.0",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
     "husky": "^7.0.4",
     "prettier": "2.5.1"
+  },
+  "jest": {
+    "resetMocks": false,
+    "transformIgnorePatterns": [
+      "node_modules/(?!@livechat)"
+    ],
+    "moduleNameMapper": {
+      "\\.css$": "identity-obj-proxy"
+    }
   }
 }
