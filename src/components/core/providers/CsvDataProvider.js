@@ -6,7 +6,9 @@ export const CsvDataProvider = ({ children }) => {
     const isCsvDataLoaded = useSelector(({ csv }) => !!csv.data);
 
     if (!isCsvDataLoaded) {
-        return <CsvFileUploader />;
+        return (
+            <CsvFileUploader data-testid="CsvDataProvider-csvFileUploader" />
+        );
     }
 
     return children;

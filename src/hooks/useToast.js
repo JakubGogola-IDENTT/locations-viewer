@@ -42,7 +42,7 @@ export const useToast = () => {
         [renderToast]
     );
     const error = useCallback(
-        content => renderToast(content, TOAST_VARIANTS.SUCCESS, nanoid()),
+        content => renderToast(content, TOAST_VARIANTS.ERROR, nanoid()),
         [renderToast]
     );
 

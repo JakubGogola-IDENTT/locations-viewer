@@ -3,12 +3,13 @@ import { useDispatch } from 'react-redux';
 import { parse } from 'papaparse';
 import { validateCsvFile } from '../functions';
 import { csvDataAcquired } from '../actions/csv';
-// import { useToast } from './useToast';
+import { useToast } from './useToast';
 
 export const useUploadCsvFile = () => {
     const dispatch = useDispatch();
     const [file, setFile] = useState(null);
     const [isParsing, setIsParsing] = useState(false);
+    const toast = useToast();
 
     const handleUpload = useCallback(e => {
         setFile(e.target?.files[0]);
@@ -16,27 +17,34 @@ export const useUploadCsvFile = () => {
 
     const handleComplete = useCallback(
         ({ data }) => {
-            setIsParsing(false);
-            validateCsvFile(data);
-            dispatch(csvDataAcquired(data));
+            try {
+                validateCsvFile(data);
+                dispatch(csvDataAcquired(data));
+            } catch (error) {
+                toast.error(error.message);
+            } finally {
+                setIsParsing(false);
+                setFile(null);
+            }
         },
-        [dispatch]
+        [dispatch, toast]
     );
 
     const handleParse = useCallback(() => {
         parse(file, {
             complete: handleComplete,
+            skipEmptyLines: true,
         });
     }, [file, handleComplete]);
 
     useEffect(() => {
-        if (!file) {
+        if (!file || isParsing) {
             return;
         }
 
         setIsParsing(true);
         handleParse();
-    }, [file, handleComplete, handleParse]);
+    }, [file, handleComplete, handleParse, isParsing]);
 
     return {
         isParsing,
