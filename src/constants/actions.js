@@ -1,3 +1,6 @@
+// common
+export const STATE_CLEARED = 'STATE_CLEARED';
+
 // csv
 export const CSV_DATA_ACQUIRED = 'CSV_DATA_ACQUIRED';
 
