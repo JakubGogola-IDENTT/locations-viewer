@@ -17,7 +17,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "static-analysis": "eslint src",
-    "static-analysis:fix": "eslint src --fix"
+    "static-analysis:fix": "eslint src --fix",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
