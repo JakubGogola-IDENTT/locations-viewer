@@ -13,11 +13,11 @@ export const useToast = () => {
     const opts = useMemo(
         () => ({
             position: toast.POSITION.TOP_CENTER,
-            hideProgressBar: false,
+            hideProgressBar: true,
             transition: Slide,
             closeOnClick: false,
             closeButton: false,
-            autoClose: 3500,
+            autoClose: 4000,
         }),
         []
     );
