@@ -1,21 +1,16 @@
-import logo from './logo.svg';
-import './App.css';
+import { Provider } from 'react-redux';
+import { store } from './reducers';
+import { globalStyles } from './styles';
+import { useStyles } from './hooks';
 
-export const App = () => (
-    <div className="App">
-        <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-                Edit <code>src/App.js</code> and save to reload.
-            </p>
-            <a
-                className="App-npm install --save-dev --save-exact prettierlink"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-                Learn React
-            </a>
-        </header>
-    </div>
-);
+import '@livechat/design-system/dist/design-system.css';
+
+export const App = () => {
+    const classes = useStyles(globalStyles, App);
+
+    return (
+        <Provider store={store}>
+            <div className={classes.root}>App</div>
+        </Provider>
+    );
+};
