@@ -14,7 +14,7 @@
     "react-scripts": "4.0.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "start": "PORT=4430 HTTPS=true react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "test:ci": "CI=true npm run test",
