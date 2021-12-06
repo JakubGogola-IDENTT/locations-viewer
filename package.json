@@ -4,6 +4,7 @@
   "private": true,
   "dependencies": {
     "@livechat/design-system": "^0.13.1",
+    "@material-ui/styles": "^4.11.4",
     "@testing-library/jest-dom": "^5.16.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
