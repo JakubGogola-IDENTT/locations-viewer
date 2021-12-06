@@ -1,4 +1,4 @@
-import { CSV_DATA_ACQUIRED } from '../constants/actions';
+import { CSV_DATA_ACQUIRED, STATE_CLEARED } from '../constants/actions';
 
 const initalState = {
     data: null,
@@ -16,6 +16,11 @@ export const csv = (state = initalState, action) => {
             return {
                 ...state,
                 data: action.data,
+            };
+        case STATE_CLEARED:
+            return {
+                ...state,
+                data: null,
             };
         default:
             return state;

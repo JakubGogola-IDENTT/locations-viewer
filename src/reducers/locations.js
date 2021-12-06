@@ -1,4 +1,4 @@
-import { LOCATIONS_PARSED } from '../constants/actions';
+import { LOCATIONS_PARSED, STATE_CLEARED } from '../constants/actions';
 
 const initialState = {
     locationsList: [],
@@ -16,6 +16,11 @@ export const locations = (state = initialState, action) => {
             return {
                 ...state,
                 locationsList: action.locationsList,
+            };
+        case STATE_CLEARED:
+            return {
+                ...state,
+                locationsList: [],
             };
         default:
             return state;
