@@ -8,23 +8,15 @@ import { csvDataAcquired } from '../actions/csv';
 export const useUploadCsvFile = () => {
     const dispatch = useDispatch();
     const [file, setFile] = useState(null);
-    const [state, setState] = useState({
-        isParsing: false,
-        data: null,
-        errors: [],
-    });
+    const [isParsing, setIsParsing] = useState(false);
 
     const handleUpload = useCallback(e => {
         setFile(e.target?.files[0]);
     }, []);
 
     const handleComplete = useCallback(
-        ({ data, errors }) => {
-            setState({
-                data,
-                errors,
-                isParsing: false,
-            });
+        ({ data }) => {
+            setIsParsing(false);
             validateCsvFile(data);
             dispatch(csvDataAcquired(data));
         },
@@ -42,16 +34,12 @@ export const useUploadCsvFile = () => {
             return;
         }
 
-        setState({
-            data: null,
-            errors: [],
-            isParsing: true,
-        });
+        setIsParsing(true);
         handleParse();
     }, [file, handleComplete, handleParse]);
 
     return {
-        isParsing: state.isParsing,
+        isParsing,
         handleUpload,
     };
 };
