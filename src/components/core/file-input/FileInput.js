@@ -1,22 +1,16 @@
-import { useState, useCallback } from 'react';
+import PropTypes from 'prop-types';
 import { InputField } from '@livechat/design-system';
 
-export const FileInput = () => {
-    const [, setFile] = useState('');
+export const FileInput = ({ onChange }) => (
+    <InputField
+        id="fileInput"
+        accept=".csv"
+        type="file"
+        placeholder="Choose CSV file to upload"
+        onChange={onChange}
+    />
+);
 
-    const handleUpload = useCallback(e => {
-        setFile(e.target?.files[0]);
-    }, []);
-
-    return (
-        <InputField
-            id="fileInput"
-            accept=".csv"
-            type="file"
-            placeholder="Choose CSV file to upload"
-            onChange={handleUpload}
-        />
-    );
+FileInput.propTypes = {
+    onChange: PropTypes.func.isRequired,
 };
-
-FileInput.propTypes = {};
