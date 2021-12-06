@@ -51,7 +51,8 @@
         "react/function-component-definition": ["error",  {
             "namedComponents": "arrow-function",
             "unnamedComponents": "arrow-function"
-        }]
+        }],
+        "default-param-last": "off"
     },
     "overrides": [
         {

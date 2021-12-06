@@ -1,4 +1,5 @@
 import { Provider } from 'react-redux';
+import { Main } from './components/pages/main/Main';
 import { store } from './reducers';
 import { globalStyles } from './styles';
 import { useStyles } from './hooks';
@@ -10,7 +11,9 @@ export const App = () => {
 
     return (
         <Provider store={store}>
-            <div className={classes.root}>App</div>
+            <div className={classes.root}>
+                <Main />
+            </div>
         </Provider>
     );
 };
