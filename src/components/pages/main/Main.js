@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import { FileUpload } from '../../modules/file-upload/FileUpload';
 
 export const Main = () => {
     const [csvData, locationsList] = useSelector(
@@ -13,5 +14,5 @@ export const Main = () => {
         return 'Columns assignment';
     }
 
-    return 'File upload';
+    return <FileUpload />;
 };
