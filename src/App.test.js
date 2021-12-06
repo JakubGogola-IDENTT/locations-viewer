@@ -1,8 +1,8 @@
-import { render, screen } from '@testing-library/react';
+import { shallow } from 'enzyme';
 import { App } from './App';
 
-test.skip('renders learn react link', () => {
-    render(<App />);
-    const linkElement = screen.getByText(/learn react/i);
-    expect(linkElement).toBeInTheDocument();
+test('renders without crashing', () => {
+    const wrapper = shallow(<App />);
+    const root = wrapper.find('div[data-testid="App-root"]');
+    expect(root).toExist();
 });
