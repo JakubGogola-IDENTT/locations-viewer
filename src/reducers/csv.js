@@ -1,7 +1,7 @@
 import { CSV_DATA_ACQUIRED } from '../constants/actions';
 
 const initalState = {
-    csvData: null,
+    data: null,
 };
 
 /**
@@ -15,7 +15,7 @@ export const csv = (state = initalState, action) => {
         case CSV_DATA_ACQUIRED:
             return {
                 ...state,
-                csvData: action.csvData,
+                data: action.data,
             };
         default:
             return state;
