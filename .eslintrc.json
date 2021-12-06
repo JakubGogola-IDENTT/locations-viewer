@@ -1,49 +1,18 @@
 {
-
-    "env": {
-        "browser": true,
-        "es2021": true,
-        "jest/globals": true
-    },
-    "extends": [
-        "plugin:react/recommended",
-        "airbnb",
-        "eslint:recommended",
-        "prettier",
-        "plugin:react-hooks/recommended", 
-        "plugin:jest/recommended", 
-        "plugin:jsdoc/recommended", 
-        "plugin:promise/recommended"
-    ],
-    "overrides": [
-        {
-            "files": ["*.test.js", "src/test/**/*.js"],
-            "rules": {
-                "prefer-promise-reject-errors": "off",
-                "promise/always-return": "off",
-                "promise/catch-or-return": "off",
-                "promise/param-names": "off",
-                "promise/no-callback-in-promise": "off",
-                "react/prop-types": "off",
-                "react/jsx-props-no-spreading": "off",
-                "import/no-extraneous-dependencies": "off"
-            }
-        }
-    ],
     "parser": "babel-eslint",
     "parserOptions": {
         "sourceType": "module",
         "allowImportExportEverywhere": false,
         "codeFrame": false
     },
-    "plugins": [
-        "react",
-        "babel", 
-        "prettier", 
-        "react-hooks", 
-        "jest"
-    ],
     "root": true,
+    "env": {
+        "browser": true,
+        "es6": true,
+        "jest/globals": true
+    },
+    "extends": ["airbnb", "eslint:recommended", "prettier", "plugin:react-hooks/recommended", "plugin:jest/recommended", "plugin:jsdoc/recommended", "plugin:promise/recommended"],
+    "plugins": ["babel", "prettier", "react-hooks", "jest"],
     "rules": {
         "react/jsx-uses-react": "off",
         "react/react-in-jsx-scope": "off",
@@ -77,8 +46,28 @@
         "valid-jsdoc": "off",
         "no-bitwise": "off",
         "jsx-a11y/click-events-have-key-events": "off",
-        "promise/catch-or-return": ["error", { "allowFinally": true }]
+        "promise/catch-or-return": ["error", { "allowFinally": true }],
+        "arrow-body-style": ["error", "as-needed"],
+        "react/function-component-definition": ["error",  {
+            "namedComponents": "arrow-function",
+            "unnamedComponents": "arrow-function"
+        }]
     },
+    "overrides": [
+        {
+            "files": ["*.test.js", "src/test/**/*.js"],
+            "rules": {
+                "prefer-promise-reject-errors": "off",
+                "promise/always-return": "off",
+                "promise/catch-or-return": "off",
+                "promise/param-names": "off",
+                "promise/no-callback-in-promise": "off",
+                "react/prop-types": "off",
+                "react/jsx-props-no-spreading": "off",
+                "import/no-extraneous-dependencies": "off"
+            }
+        }
+    ],
     "settings": {
         "ecmascript": 6,
         "import/resolver": {
