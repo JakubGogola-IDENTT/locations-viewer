@@ -1,4 +1,4 @@
 #!/bin/sh
 . "$(dirname "$0")/_/husky.sh"
 
-npm run static-analysis && npm test:ci
+npm run static-analysis && npm run test:ci
