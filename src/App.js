@@ -2,6 +2,7 @@ import { Provider } from 'react-redux';
 import { ToastContainer } from 'react-toastify';
 import { CsvDataProvider } from './components/core/providers/CsvDataProvider';
 import { LocationsProvider } from './components/core/providers/LocationsProvider';
+import { MapsApiProvider } from './components/core/providers/MapsApiProvider';
 import { LocationsMap } from './components/pages/locations/LocationsMap';
 import { store } from './reducers';
 import { globalStyles } from './styles';
@@ -19,7 +20,9 @@ export const App = () => {
                 <ToastContainer />
                 <CsvDataProvider>
                     <LocationsProvider>
-                        <LocationsMap />
+                        <MapsApiProvider>
+                            <LocationsMap />
+                        </MapsApiProvider>
                     </LocationsProvider>
                 </CsvDataProvider>
             </div>
