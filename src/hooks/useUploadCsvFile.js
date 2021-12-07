@@ -7,47 +7,79 @@ import { useToast } from './useToast';
 
 export const useUploadCsvFile = () => {
     const dispatch = useDispatch();
-    const [file, setFile] = useState(null);
-    const [isParsing, setIsParsing] = useState(false);
+    const [state, setState] = useState({
+        file: null,
+        isParsing: false,
+    });
     const toast = useToast();
 
-    const handleUpload = useCallback(e => {
-        setFile(e.target?.files[0]);
+    const handleUpload = useCallback(
+        e => {
+            setState({
+                ...state,
+                file: e.target?.files[0],
+            });
+        },
+        [state]
+    );
+
+    const handleErrors = useCallback(
+        errors => {
+            errors.forEach(error => toast.error(error?.message || error));
+        },
+        [toast]
+    );
+
+    const resetState = useCallback(() => {
+        setState({
+            file: null,
+            isParsing: false,
+        });
     }, []);
 
     const handleComplete = useCallback(
-        ({ data }) => {
-            try {
-                validateCsvFile(data);
-                dispatch(csvDataAcquired(data));
-            } catch (error) {
-                toast.error(error.message);
-            } finally {
-                setIsParsing(false);
-                setFile(null);
+        ({ data, errors }) => {
+            if (errors.length > 0) {
+                handleErrors(errors);
+                resetState();
+                return;
             }
+
+            const validationErrors = validateCsvFile(data);
+
+            if (validationErrors.length > 0) {
+                handleErrors(validationErrors);
+                resetState();
+                return;
+            }
+
+            dispatch(csvDataAcquired(data));
+            resetState();
         },
-        [dispatch, toast]
+        [dispatch, handleErrors, resetState]
     );
 
     const handleParse = useCallback(() => {
-        parse(file, {
+        parse(state.file, {
             complete: handleComplete,
             skipEmptyLines: true,
         });
-    }, [file, handleComplete]);
+    }, [handleComplete, state.file]);
 
     useEffect(() => {
-        if (!file || isParsing) {
+        if (!state.file || state.isParsing) {
             return;
         }
 
-        setIsParsing(true);
+        setState({
+            ...state,
+            isParsing: true,
+        });
         handleParse();
-    }, [file, handleComplete, handleParse, isParsing]);
+    }, [handleParse, state]);
 
     return {
-        isParsing,
+        isParsing: state.isParsing,
         handleUpload,
     };
 };
