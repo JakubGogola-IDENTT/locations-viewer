@@ -5,7 +5,13 @@ import { SelectField as Select } from '@livechat/design-system';
 import { LABELS } from '../../../constants/labels';
 import { Item } from './Item';
 
-export const LabelSelect = ({ id, assignments, selected, onSelect }) => {
+export const LabelSelect = ({
+    id,
+    className,
+    assignments,
+    selected,
+    onSelect,
+}) => {
     const items = useMemo(
         () => [
             {
@@ -61,6 +67,7 @@ export const LabelSelect = ({ id, assignments, selected, onSelect }) => {
     return (
         <Select
             id={id}
+            className={className}
             items={items}
             search={false}
             onItemSelect={handleSelect}
@@ -73,7 +80,8 @@ export const LabelSelect = ({ id, assignments, selected, onSelect }) => {
 };
 
 LabelSelect.propTypes = {
-    id: PropTypes.string.isRequired,
+    id: PropTypes.number.isRequired,
+    className: PropTypes.string,
     selected: PropTypes.string,
     assignments: PropTypes.shape({}).isRequired,
     onSelect: PropTypes.func.isRequired,

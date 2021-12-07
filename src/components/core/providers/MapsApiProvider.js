@@ -9,7 +9,7 @@ export const MapsApiProvider = ({ children }) => {
 
     useEffect(() => {
         const loader = new ApiLoader({
-            apiKey: 'AIzaSyBHWhONiRbHBtH7rInBf6Fs3ydsJ6B1lAU',
+            apiKey: 'xDDD',
             version: 'weekly',
         });
 

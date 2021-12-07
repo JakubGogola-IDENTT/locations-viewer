@@ -1,9 +1,10 @@
 import PropTypes from 'prop-types';
 import { InputField } from '@livechat/design-system';
 
-export const FileInput = ({ disabled, onChange }) => (
+export const FileInput = ({ className, disabled, onChange }) => (
     <InputField
         id="fileInput"
+        className={className}
         disabled={disabled}
         accept=".csv"
         type="file"
@@ -13,6 +14,7 @@ export const FileInput = ({ disabled, onChange }) => (
 );
 
 FileInput.propTypes = {
+    className: PropTypes.string,
     disabled: PropTypes.bool.isRequired,
     onChange: PropTypes.func.isRequired,
 };

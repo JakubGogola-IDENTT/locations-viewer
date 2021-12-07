@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useSelector } from 'react-redux';
-import { LocationsParser } from '../../modules/locations/LocationsParser';
+import { LabelSelectsGroup } from '../../modules/locations/LabelSelectsGroup';
 
 export const LocationsProvider = ({ children }) => {
     const areLocationsParsed = useSelector(
@@ -8,7 +8,7 @@ export const LocationsProvider = ({ children }) => {
     );
 
     if (!areLocationsParsed) {
-        return <LocationsParser />;
+        return <LabelSelectsGroup />;
     }
 
     return children;
