@@ -2,6 +2,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { parse } from 'papaparse';
 import { validateCsvFile } from '../functions';
+import { parsingErrorsMapper } from '../functions/mappers';
 import { csvDataAcquired } from '../actions/csv';
 import { useToast } from './useToast';
 
@@ -25,7 +26,7 @@ export const useUploadCsvFile = () => {
 
     const handleErrors = useCallback(
         errors => {
-            errors.forEach(error => toast.error(error?.message || error));
+            errors.forEach(error => toast.error(error));
         },
         [toast]
     );
@@ -39,21 +40,17 @@ export const useUploadCsvFile = () => {
 
     const handleComplete = useCallback(
         ({ data, errors }) => {
-            if (errors.length > 0) {
-                handleErrors(errors);
-                resetState();
-                return;
+            const errorMessages = [
+                ...parsingErrorsMapper(errors),
+                ...(errors.length === 0 ? validateCsvFile(data) : []),
+            ];
+
+            if (errorMessages.length > 0) {
+                handleErrors(errorMessages);
+            } else {
+                dispatch(csvDataAcquired(data));
             }
 
-            const validationErrors = validateCsvFile(data);
-
-            if (validationErrors.length > 0) {
-                handleErrors(validationErrors);
-                resetState();
-                return;
-            }
-
-            dispatch(csvDataAcquired(data));
             resetState();
         },
         [dispatch, handleErrors, resetState]
