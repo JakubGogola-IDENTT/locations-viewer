@@ -1,4 +1,5 @@
 import { useMemo } from 'react';
+import { Button } from '@livechat/design-system';
 import { LabelSelect } from '../../core/select/LabelSelect';
 import { COLUMN_IDS } from '../../../constants/columnIds';
 import { useStyles, useLabelSelectsGroup } from '../../../hooks';
@@ -12,7 +13,8 @@ const styles = {
 
 export const LocationsParser = () => {
     const classes = useStyles(styles, LocationsParser);
-    const { assignments, handleSelect } = useLabelSelectsGroup();
+    const { assignments, canSubmit, handleSelect, handleSubmit } =
+        useLabelSelectsGroup();
 
     const components = useMemo(
         () =>
@@ -31,5 +33,12 @@ export const LocationsParser = () => {
         [assignments, classes.box, handleSelect]
     );
 
-    return <div className={classes.box}>{components}</div>;
+    return (
+        <div className={classes.box}>
+            {components}
+            <Button kind="primary" disabled={!canSubmit} onClick={handleSubmit}>
+                Submit
+            </Button>
+        </div>
+    );
 };

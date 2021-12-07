@@ -33,9 +33,13 @@ export const LabelSelect = ({ id, assignments, selected, onSelect }) => {
 
     const handleSelect = useCallback(
         item => {
+            if (selectedItems.includes(item)) {
+                return;
+            }
+
             onSelect(id, item);
         },
-        [id, onSelect]
+        [id, onSelect, selectedItems]
     );
 
     const getItemBody = useCallback(
