@@ -6,4 +6,4 @@ import { makeStyles } from '../functions';
  * @returns {import('@material-ui/styles').ClassNameMap}
  */
 export const useStyles = (styles, Component) =>
-    makeStyles(styles, Component, 'rt');
+    makeStyles(styles, Component, 'rt')();
