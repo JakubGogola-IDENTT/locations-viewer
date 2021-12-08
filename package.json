@@ -24,7 +24,7 @@
     "serve": "^13.0.2"
   },
   "scripts": {
-    "devstart": "react-scripts start",
+    "start:dev": "react-scripts start",
     "start": "serve -s build",
     "build": "react-scripts build",
     "test": "react-scripts test",
