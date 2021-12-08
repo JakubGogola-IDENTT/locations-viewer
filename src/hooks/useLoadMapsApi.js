@@ -21,6 +21,7 @@ export const useLoadMapsApi = () => {
             .load()
             .then(() => setIsLoaded(true))
             .catch(error => {
+                console.log('xd');
                 const cause = error?.message ? ` Cause: ${error.message}` : '';
                 toast.error(
                     `Loading Maps API failed. Try to refresh website.${cause}`

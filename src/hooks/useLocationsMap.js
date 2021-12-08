@@ -12,7 +12,7 @@ export const useLocationsMap = () => {
             setMap(
                 new google.maps.Map(ref.current, {
                     zoom: 0,
-                    center: new google.maps.LatLng(-34.397, 150.644),
+                    center: new google.maps.LatLng(0, 0),
                 })
             );
         }
