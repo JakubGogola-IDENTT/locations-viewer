@@ -1,5 +1,5 @@
 /* eslint-disable max-classes-per-file */
-import { renderHook, act } from '@testing-library/react-hooks';
+import { renderHook } from '@testing-library/react-hooks';
 import { useLocationsMap } from './useLocationsMap';
 
 const mockUseRef = jest.fn();
