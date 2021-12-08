@@ -1,6 +1,4 @@
-// import { Wrapper } from '@googlemaps/react-wrapper';
 import { useStyles, useLocationsMap } from '../../../hooks';
-// import { config } from '../../../config';
 
 const styles = {
     box: {
@@ -8,12 +6,14 @@ const styles = {
         height: '100%',
         display: 'flex',
         flexFlow: 'column nowrap',
-        justifyContent: 'center',
-        alignItems: 'center',
+        padding: '20px',
     },
     map: {
         width: '800px',
         height: '600px',
+    },
+    header: {
+        marginBottom: '10px',
     },
 };
 
@@ -23,6 +23,11 @@ export const LocationsMap = () => {
 
     return (
         <div className={classes.box}>
+            <h1 className={classes.header}>Your locations</h1>
+            <p>
+                Here&apos;s map with locations passed from CSV file. Each
+                category is marked by different color.
+            </p>
             <div className={classes.map} id="map" ref={ref} />
         </div>
     );
