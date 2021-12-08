@@ -3,3 +3,4 @@ export * from './useUploadCsvFile';
 export * from './useLabelSelectsGroup';
 export * from './useLoadMapsApi';
 export * from './useLocationsMap';
+export * from './useReset';

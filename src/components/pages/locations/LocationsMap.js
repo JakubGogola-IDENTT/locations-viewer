@@ -1,4 +1,5 @@
-import { useStyles, useLocationsMap } from '../../../hooks';
+import { Button } from '@livechat/design-system';
+import { useStyles, useLocationsMap, useReset } from '../../../hooks';
 
 const styles = {
     box: {
@@ -15,11 +16,15 @@ const styles = {
     header: {
         marginBottom: '10px',
     },
+    button: {
+        width: '150px',
+    },
 };
 
 export const LocationsMap = () => {
     const classes = useStyles(styles, LocationsMap);
     const { ref } = useLocationsMap();
+    const handleReset = useReset();
 
     return (
         <div className={classes.box}>
@@ -29,6 +34,16 @@ export const LocationsMap = () => {
                 category is marked by different color.
             </p>
             <div className={classes.map} id="map" ref={ref} />
+            <p>
+                If you wish to set new locations on map then click button below!
+            </p>
+            <Button
+                className={classes.button}
+                kind="destructive"
+                onClick={handleReset}
+            >
+                Reset
+            </Button>
         </div>
     );
 };

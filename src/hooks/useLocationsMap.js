@@ -1,11 +1,11 @@
 /* global google */
 import { useEffect, useRef, useState } from 'react';
-import { useMarkers } from './useMarkers';
+import { useSetMarkers } from './useSetMarkers';
 
 export const useLocationsMap = () => {
     const ref = useRef(null);
     const [map, setMap] = useState(null);
-    const setMarkers = useMarkers(map);
+    const setMarkers = useSetMarkers(map);
 
     useEffect(() => {
         if (ref.current && !map) {
