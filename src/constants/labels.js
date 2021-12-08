@@ -1,8 +1,8 @@
 export const LABELS = {
-    CITY: 'CITY',
-    STATE: 'STATE',
-    ZIP: 'ZIP',
-    ADDRESS: 'ADDRESS',
-    CATEGORY: 'CATEGORY',
+    CITY: 'city',
+    STATE: 'state',
+    ZIP: 'zip',
+    ADDRESS: 'address',
+    CATEGORY: 'category',
     getAll: () => Object.values(LABELS).filter(v => typeof v === 'string'),
 };
