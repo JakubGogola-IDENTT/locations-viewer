@@ -1,4 +1,4 @@
-# Locations viever
+# Locations viewer
 
 This simple application allows you to mark all your favourite locations on map using colorful markers.
 
